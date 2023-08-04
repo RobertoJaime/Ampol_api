@@ -16,6 +16,7 @@ dependencies {
     implementation ("javax.xml.bind:jaxb-api:2.3.1")
     implementation ("com.fasterxml.jackson.core:jackson-databind:2.12.5")
     implementation ("com.google.code.gson:gson:2.8.8")
+    implementation ("io.github.cdimascio:dotenv-java:3.0.0")
     testImplementation("junit:junit:4.13.1")
 }
 
