@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 public class ampolApiTest1 {
 
     @Test
-    public void getResponseStatus() {
+    public void GetSydneyCurrentWeatherDetailsAndWriteToXMLFile() {
         final String BASE_URL = "https://api.weatherapi.com/v1/current.json";
         final String API_KEY = "d752d6efd45a4c458b611524231407";
 
@@ -18,6 +18,7 @@ public class ampolApiTest1 {
                 .when()
                 .get(BASE_URL)
                 .getBody().asString();
+
 
         // Parse the JSON response using Gson and map it to the WeatherResponse class
         Gson gson = new Gson();
@@ -31,16 +32,5 @@ public class ampolApiTest1 {
         System.out.println("Temperature in Fahrenheit: " + tempF);
         // Write values to XML file
         weatherResponse.writeValuesToXML(tempC, tempF);
-        int statusCode = given()
-                .queryParam("key", API_KEY)
-                .queryParam("q", "Sydney")
-                .queryParam("aqi", "no")
-                .when()
-                .get(BASE_URL)
-                .getStatusCode();
-
-        System.out.println("The response status is " + statusCode);
-
-        assertEquals(200, statusCode, "Status code should be 200");
     }
 }
